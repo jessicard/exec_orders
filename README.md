@@ -8,3 +8,4 @@ A bot that tweets every time there's a new executive order.
 1. Make sure you have Ruby 2.4.0 by running `ruby test.rb`. If you don't, install Ruby 2.4.0:
   1. Upgrade your version of ruby-build by running `brew upgrade ruby-build`.
   1. Install Ruby 2.4.0 by running `rbenv install 2.4.0`.
+1. Install bundler by running `gem install bundler`.
