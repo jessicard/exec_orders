@@ -15,3 +15,7 @@ end
 task :test_api_tweet do
   ruby "api_tweet_test.rb"
 end
+
+task :backfill do
+  ruby "backfill.rb"
+end
