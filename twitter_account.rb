@@ -5,8 +5,6 @@ require "twitter"
 class TwitterAccount
   CONVERTED_LINK_LENGTH = 22
   MAX_TWEET_LENGTH = 140
-  SPACE_LENGTH = 1
-  ELLIPSIS_LENGTH = 1
 
   def initialize
     @client = Twitter::REST::Client.new do |config|
@@ -22,11 +20,14 @@ class TwitterAccount
   end
 
   def self.truncate_content(title, link)
-    tweet_length = title.length + CONVERTED_LINK_LENGTH + SPACE_LENGTH
-    truncated_title = title
+    # +1 to account for space length between title and link
+    MAX_TITLE_LENGTH = MAX_TWEET_LENGTH - (CONVERTED_LINK_LENGTH + 1)
 
-    if title.length > (MAX_TWEET_LENGTH - (CONVERTED_LINK_LENGTH + SPACE_LENGTH))
-      truncated_title = "#{title[0, (MAX_TWEET_LENGTH - (CONVERTED_LINK_LENGTH + SPACE_LENGTH + ELLIPSIS_LENGTH))]}…"
+    truncated_title = if title.size <= MAX_TITLE_LENGTH
+      title
+    else
+      # -1 to account for ellipsis length
+      title[0, MAX_TITLE_LENGTH - 1] + "…"
     end
 
     "#{truncated_title} #{link}"
