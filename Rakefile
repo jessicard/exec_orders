@@ -15,3 +15,7 @@ end
 task :test_api_tweet do
   ruby "api_tweet_test.rb"
 end
+
+task :test_redis do
+  ruby "redis_test.rb"
+end
