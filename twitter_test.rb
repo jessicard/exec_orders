@@ -1,4 +1,4 @@
 require "./twitter_client"
 
-twitter_instance = TwitterClient.new
-twitter_instance.tweet("Testing")
+twitter_account = TwitterAccount.new
+twitter_account.tweet("Testing")

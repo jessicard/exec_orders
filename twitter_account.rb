@@ -2,7 +2,7 @@ require "rubygems"
 require "dotenv/load"
 require "twitter"
 
-class TwitterClient
+class TwitterAccount
   def initialize
     @client = Twitter::REST::Client.new do |config|
       config.consumer_key        = ENV["CONSUMER_KEY"]
@@ -12,7 +12,7 @@ class TwitterClient
     end
   end
 
-  def tweet(twitter_msg)
-    @client.update(twitter_msg)
+  def tweet(msg)
+    @client.update(msg)
   end
 end
