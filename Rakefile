@@ -7,3 +7,7 @@ end
 task :test_federal_register do
   ruby "test_federal_register.rb"
 end
+
+rake :tweet do
+  ruby "twitter.rb"
+end
