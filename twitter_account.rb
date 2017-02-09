@@ -3,6 +3,10 @@ require "dotenv/load"
 require "twitter"
 
 class TwitterAccount
+  MAX_LINK_LENGTH = 22
+  MAX_TWEET_LENGTH = 140
+  SPACE_LENGTH = 1
+
   def initialize
     @client = Twitter::REST::Client.new do |config|
       config.consumer_key        = ENV["CONSUMER_KEY"]
@@ -14,5 +18,35 @@ class TwitterAccount
 
   def tweet(msg)
     @client.update(msg)
+  end
+
+  def self.truncate_content(title, link)
+    link_length = link.length >= MAX_LINK_LENGTH ? MAX_LINK_LENGTH : link.length
+    tweet_length = title.length + link_length + SPACE_LENGTH
+    truncated_title = title
+
+    if tweet_length > MAX_TWEET_LENGTH
+      difference = (tweet_length - MAX_TWEET_LENGTH) + (link_length + SPACE_LENGTH)
+
+      truncated_title = title.truncate(MAX_TWEET_LENGTH - difference)
+    end
+
+    "#{truncated_title} #{link}"
+  end
+end
+
+class String
+  def truncate(truncate_at, options = {})
+    return dup unless length > truncate_at
+
+    options[:omission] ||= '...'
+    length_with_room_for_omission = truncate_at - options[:omission].length
+    stop = if options[:separator]
+        rindex(options[:separator], length_with_room_for_omission) || length_with_room_for_omission
+      else
+        length_with_room_for_omission
+      end
+
+    "#{self[0...stop]}#{options[:omission]}"
   end
 end
