@@ -17,5 +17,3 @@ end
 backfill_tweet_info.each do |info|
   puts TwitterAccount.truncate_content(info[:title], info[:link])
 end
-
-puts TwitterAccount.truncate_content("Here is a ton of garbage that's definitely over 140 characters I hope because I don't want to type this again what about now come one please truncate", "lololololololgoogle.com")
