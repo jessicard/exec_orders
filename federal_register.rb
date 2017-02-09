@@ -4,7 +4,7 @@ require "pp"
 
 class FederalRegister
   def self.test
-    res = Faraday.get("https://www.federalregister.gov/api/v1/documents.json?per_page=1000&order=newest&conditions%5Bpresidential_document_type%5D%5B%5D=executive_order")
+    res = Faraday.get("https://www.federalregister.gov/api/v1/documents.json?per_page=50&order=newest&conditions%5Bpresidential_document_type%5D%5B%5D=executive_order")
 
     pp JSON.parse(res.body)
   end
