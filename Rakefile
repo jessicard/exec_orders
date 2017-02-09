@@ -4,6 +4,10 @@ task :test do
   ruby "test.rb"
 end
 
+task :test_executive_order_registry do
+  ruby "executive_order_registry_test.rb"
+end
+
 task :test_federal_register do
   ruby "test_federal_register.rb"
 end
