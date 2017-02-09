@@ -44,6 +44,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  faraday (~> 0.11.0)
   rake (= 12.0.0)
   twitter (= 6.1.0)
 
