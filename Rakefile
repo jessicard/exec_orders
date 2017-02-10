@@ -23,3 +23,7 @@ end
 task :test_executive_order_registry do
   ruby "executive_order_registry_test.rb"
 end
+
+task :process_executive_orders_from_today do
+  ruby "process_executive_orders_from_today.rb"
+end
