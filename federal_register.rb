@@ -18,7 +18,7 @@ class FederalRegister
   private
 
   def self.executive_orders_from(response)
-    results = JSON.parse(res.body)["results"]
+    results = JSON.parse(response.body)["results"]
     results.map { |eo| ExecutiveOrder.from_federal_register_hash(eo) }
   end
 end
