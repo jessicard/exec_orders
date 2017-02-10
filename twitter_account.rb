@@ -18,7 +18,7 @@ class TwitterAccount
   end
 
   def tweet(msg)
-    if ENV["DEVELOPMENT"] == true
+    if ENV["DEVELOPMENT"]
       puts msg
     else
       @client.update(msg)

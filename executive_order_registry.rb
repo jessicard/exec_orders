@@ -4,7 +4,7 @@ class ExecutiveOrderRegistry
   DOCUMENT_NUMBERS_KEY = "document_numbers"
 
   def register(executive_order)
-    if ENV["DEVELOPMENT"] == true
+    if ENV["DEVELOPMENT"]
       puts "Register!"
     else
       redis_client.sadd(DOCUMENT_NUMBERS_KEY, executive_order.document_number)
