@@ -4,7 +4,7 @@ task :test do
   ruby "test.rb"
 end
 
-task :backfill_twitter do
+task :backfill do
   ruby "backfill.rb"
 end
 
