@@ -4,16 +4,8 @@ task :test do
   ruby "test.rb"
 end
 
-namespace :backfill do
-  desc "Log the results of the backfill locally"
-  task :log do
-    ruby "backfill.rb log"
-  end
-
-  desc "Backfill the Twitter account"
-  task :twitter do
-    ruby "backfill.rb twitter"
-  end
+task :backfill_twitter do
+  ruby "backfill.rb"
 end
 
 task :clear_registry do
