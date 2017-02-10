@@ -9,8 +9,6 @@ class ExecutiveOrderProcessor
   def process(executive_order)
     return if registry.registered?(executive_order)
 
-    registry.register(executive_order)
-
     tweet = TwitterAccount.truncate_content(executive_order.title, executive_order.url)
 
     case @strategy
@@ -19,6 +17,7 @@ class ExecutiveOrderProcessor
       puts "--------"
     when :twitter
       twitter_account.tweet(tweet)
+      registry.register(executive_order)
     end
   end
 
