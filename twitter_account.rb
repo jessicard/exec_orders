@@ -1,7 +1,5 @@
 require "rubygems"
 require "dotenv/load"
-require "faraday"
-require "json"
 require "twitter"
 
 class TwitterAccount
