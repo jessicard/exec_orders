@@ -1,6 +1,3 @@
-require "rubygems"
-require "pp"
-
 require "./federal_register"
 require "./twitter_account"
 
