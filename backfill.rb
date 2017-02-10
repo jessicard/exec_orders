@@ -1,9 +1,8 @@
 require "./federal_register"
-require "./twitter_account"
+require "./executive_order_processor"
 
-twitter_account = TwitterAccount.new
-api_results = FederalRegister.backfill["results"]
+processor = ExecutiveOrderProcessor.new
 
-api_results.each do |result|
-  twitter_account.tweet(TwitterAccount.truncate_content(result["title"], result["html_url"]))
+FederalRegister.backfill.each do |executive_order|
+  processor.process(executive_order)
 end
