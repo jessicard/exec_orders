@@ -18,7 +18,11 @@ class TwitterAccount
   end
 
   def tweet(msg)
-    @client.update(msg)
+    if ENV["DEVELOPMENT"] == true
+      puts msg
+    else
+      @client.update(msg)
+    end
   end
 
   def self.truncate_content(title, link)
