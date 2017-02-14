@@ -1,6 +1,6 @@
 require "rubygems"
-require "dotenv/load"
 require "twitter"
+require "dotenv/load" unless ENV["PRODUCTION"]
 
 class TwitterAccount
   CONVERTED_LINK_LENGTH = 22
